@@ -8,30 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var num = 0
+    @State private var textField = ""
     var body: some View {
-        VStack {
-          
-            Text("\(num)")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(Color.purple)
-            HStack {
-                Button("Increment!") {
-                    num += 1
+        ZStack {
+            VStack {
+                Spacer()
+                Text("\(textField)")
+                    .font(.system(size: 30))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .frame(width: 300 ,height: 150)
+                //                    .border(Color.black)
+                //                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                Spacer()
+                //                Divider()
+                HStack {
+                    Spacer()
+                    Button("Change Text"){
+                        if textField == "" {
+                            textField = "You are Great!"
+                        } else if textField == "You are Great!"{
+                            textField = "You are awesome!"
+                        } else {
+                            textField = ""
+                        }
+                                      }
+                    
+                    Spacer()
+                    //                    Divider()
+                    
+                    
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderedProminent)
+                .padding(.horizontal)
                 
-                Button("Decrement"){
-                    num -= 1                }
+                
+                  
+                
+                
             }
-             .buttonStyle(.bordered)
-            
-            
-            
             
             
         }
+        .background(Gradient(colors: [.red, .blue, .cyan])).opacity(0.85 )
         
     }
 }
