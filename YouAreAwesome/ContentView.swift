@@ -25,13 +25,8 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button("Change Text"){
-                        if textField == "" {
-                            textField = "You are Great!"
-                        } else if textField == "You are Great!"{
-                            textField = "You are awesome!"
-                        } else {
-                            textField = ""
-                        }
+                        let result = (textField == "" ? "Change 1" : "Change 2")
+                        textField = result
                                       }
                     
                     Spacer()
