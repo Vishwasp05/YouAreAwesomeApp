@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    let messageArray = ["Picture 1", "Picture 2", "Picture 3", "Picture 4", "Picture 5", "Picture 6", "Picture 7", "Picture 8", "Picture 9"]
     @State private var textField = ""
     @State private var imageName = ""
-    @State private var imageNum = 0
+    @State private var lastMessageNumber = -1
+    @State private var lastImageNumer = -1
+    
     var body: some View {
         ZStack {
             
@@ -38,18 +41,24 @@ struct ContentView: View {
                 //                Divider()
                 HStack {
                     Spacer()
-                    Button("Change Text"){
+                    Button("Change Image"){
                         
-                        textField = (textField == "" ? "Change 1" : "Change 2")
+                        
 //                        imageName = (imageName == "image0" ? "image1" : "image0")
-                        imageName = "image\(imageNum)"
-                        if imageNum == 10 {
-                            imageNum = 0
-                        }else {
-                            imageNum += 1
+                        //TODO: Update the imageNum var
+                        var messageNumber = Int.random(in: 0...messageArray.count - 1)
+                        while messageNumber == lastMessageNumber {
+                            messageNumber = Int.random(in: 0...messageArray.count - 1)
                         }
+                        textField = messageArray[messageNumber]
+                        lastMessageNumber = messageNumber
                         
-                        
+                        var imageNumber = Int.random(in: 0...9)
+                        while imageNumber == lastImageNumer {
+                            imageNumber = Int.random(in: 0...9)
+                        }
+                        imageName = "image\(imageNumber)"
+                        lastImageNumer = imageNumber
                          
                          
                                       }
